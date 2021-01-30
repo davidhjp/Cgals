@@ -13,7 +13,7 @@ systemj.cmxa: check
 
 check:
 	@echo $(TYPECONV)
-	$(CC) -pp "camlp4o -I $(TYPECONV) -I $(SEXPLIB)			\
+	$(CC) -pp "camlp4o -I $(TYPECONV) -I $(SEXPLIB)	-I `ocamlfind query pa_sexp_conv`		\
 	pa_type_conv.cma pa_sexp_conv.cma pa_macro.cmo -UDEBUG" -I	\
 	$(BATDIR) -I $(SEXPLIB) -I ../error -c $(SRC)
 clean:

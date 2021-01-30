@@ -9,7 +9,8 @@ REPORTDIR=../error
 REPORTDIR=../induction
 TYPECONV=`ocamlfind query type_conv`
 SEXPLIB=`ocamlfind query sexplib`
-PRETTYLIB=`ocamlfind query pretty`
+#  PRETTYLIB=`ocamlfind query pretty`
+PRETTYLIB=../ocaml-pretty/_build
 BATDIR=`ocamlfind query batteries`
 SRC=util.ml dot.ml
 all: util.cmxa
@@ -19,7 +20,7 @@ util.cmxa: util.cmx
 	$(CC) $(OCAMLOPTS) -I $(REPORTDIR) -I $(LANGUAGEDIR) util.cmx dot.cmx -o $@
 
 util.cmx:
-	$(CC) -pp "camlp4o -I $(TYPECONV) -I $(SEXPLIB) -I $(PRETTYLIB)	\
+	$(CC) -pp "camlp4o -I $(TYPECONV) -I $(SEXPLIB) -I $(PRETTYLIB)	-I `ocamlfind query pa_sexp_conv` \
 	pa_type_conv.cma pa_sexp_conv.cma pa_macro.cmo -UDEBUG" -I	\
 	$(REPORTDIR) -I $(LANGUAGEDIR) -I $(BATDIR) -I $(SEXPLIB) -I	\
 	$(LOGICLIB) -I $(PRETTYLIB) -c $(SRC)
