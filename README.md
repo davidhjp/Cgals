@@ -20,7 +20,7 @@ Safety critical Java code can also be generated.
 
 # INSTALL:
 
-Due to the deprecated package `pa_sexp_conv' use Ocaml version (<=4.02.3).
+### Due to the deprecated package `pa_sexp_conv` use Ocaml version (<=4.02.3).
 
 Install dependencies:
 
